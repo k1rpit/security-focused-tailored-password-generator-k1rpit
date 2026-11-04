@@ -43,8 +43,13 @@ replacement_dictionary_hard = {
 }
 
 def generate_vulnerable_password(*,s=str_list,i=int_list,sm=sym_list,sh=strHex_list) -> str:
-    data_vulnerable = ['root','data','qwerty','admin','asdfg','user']
+    os.chdir('tool_gen_pwd')
+    with open ('top_100.txt','r') as f:
+        data_vulnerable = f.read().splitlines()
+    os.chdir('..')
     return '{}{}{}'.format(choice(data_vulnerable),choice(i),choice(sm))
+print(generate_vulnerable_password())
+
 
 
 def generate_pin_code(*,s=str_list,i=int_list,sm=sym_list,sh=strHex_list) -> str:
